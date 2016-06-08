@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using MockAPI.Models;
-using MockAPI.Content;
+using System.Web.Mvc;
 
 namespace MockAPI.Controllers
 {
     public class WebController : ApiController
     {
-        DataRepository repo = new DataRepository();
-        
+        private IDataRepository repo;
+
+        public WebController(IDataRepository dataRepository)
+        {
+            this.repo = dataRepository;
+        }
+      
         // GET api/<controller>
         public IEnumerable<Place> Get()
         {

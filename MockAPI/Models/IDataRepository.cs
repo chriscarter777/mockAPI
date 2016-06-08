@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MockAPI.Models
 {
-    interface IDataRepository
+    public interface IDataRepository
     {
         int Size();
         IEnumerable<Place> RetrieveAll();

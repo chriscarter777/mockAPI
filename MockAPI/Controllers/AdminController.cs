@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using MockAPI.Content;
+﻿using System.Web.Mvc;
 using MockAPI.Models;
 
 namespace MockAPI.Controllers
 {
     public class AdminController : Controller
     {
-        DataRepository repo = new DataRepository();
+        private IDataRepository repo;
+
+        public AdminController(IDataRepository dataRepository)
+        {
+            this.repo = dataRepository;
+        }
 
         public ViewResult Index()
         {
