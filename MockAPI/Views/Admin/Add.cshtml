@@ -1,0 +1,34 @@
+﻿@model MockAPI.Models.Place
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <h2>Add a new Place</h2>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <div>
+                <label>Id</label>
+                @Html.TextBoxFor(p => p.Id, new { @readonly = true })
+                <label>Place Name</label>
+                @Html.TextBoxFor(p => p.Name)
+                <label>Population</label>
+                @Html.TextBoxFor(p => p.Population)
+            </div>
+            <div>
+                <p></p>
+                <input type="submit" value="Save Changes" />
+                @Html.ActionLink("Cancel", "Index");
+            </div>
+        }
+    </div></body>
+</html>

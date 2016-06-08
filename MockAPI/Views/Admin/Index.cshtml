@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MockAPI.Models.Place>
+@{ Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2> -Data.Places- currently contains:</h2>
+    <div>
+        <table>
+
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Population</th>
+                <th></th>
+            </tr>
+
+            @foreach (Place p in Model)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                    <td>@p.Population</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = p.Id })
+                        @Html.ActionLink("Delete", "Delete", new { id = p.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div>
+        <p></p>
+        @Html.ActionLink("Add a Place", "Add");
+    </div>
+</body>
+</html>
