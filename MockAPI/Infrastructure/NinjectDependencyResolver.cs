@@ -30,7 +30,7 @@ namespace MockAPI.Infrastructure
 
         private void AddBindings()
         {
-            kernel.Bind<IDataRepository>().To<DataRepository>();
+            kernel.Bind<IDataRepository>().To<SQLDataRepository>();
         }
     }
 }

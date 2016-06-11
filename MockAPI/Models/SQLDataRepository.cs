@@ -4,36 +4,38 @@ using System.Linq;
 using System.Web;
 using MockAPI.Content;
 using System.Data;
+using MockAPI.Infrastructure;
 
 namespace MockAPI.Models
 {
-    public class DataRepository : IDataRepository
+    public class SQLDataRepository : IDataRepository
     {
+        private MockAPIDbContext context = new MockAPIDbContext();
 
         public int Size()
         {
-            return Data.Places.Count;
+            return context.Places.Count();
         }
 
         public IEnumerable<Place> RetrieveAll()
         {
-            return Data.Places;
+            return context.Places;
         }
 
         public Place Retrieve(int id)
         {
-            return Data.Places.Find(p => p.Id == id);
+            return context.Places.Where(p => p.Id == id).FirstOrDefault();
         }
 
         public void Add(Place place)
         {
-            Data.Places.Add(place);
+            context.Places.Add(place);
         }
 
         public void Delete(int id)
         {
             Place place = Retrieve(id);
-            Data.Places.Remove(place);
+            context.Places.Remove(place);
         }
 
         public void Change(Place newPlace)
